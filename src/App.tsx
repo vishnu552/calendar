@@ -1,4 +1,4 @@
-import { format } from "date-fns";
+// import { format } from "date-fns";
 import { useState } from "react";
 import Calendar from "./Calender";
 import styled from "styled-components";
@@ -14,29 +14,28 @@ const App = () => {
     align-items: flex-end;
     gap: 8px;
     align-self: stretch;
+    padding-right:15px;
   `;
   const MainContainer = styled.div`
       display: flex;
       width: 375px;
-      height:175px;
-      padding-top: 28px;
       flex-direction: column;
       align-items: flex-start;
       gap: 16px;
       border-radius: 6px;
       background: #FFF;
-
+      margin:100px;
       /* Filter dropdown shadow */
       box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.25);
   `;
 
   const HeaderDiv = styled.div`
     display: flex;
-    padding: 0px 28px;
     flex-direction: column;
     align-items: flex-start;
     gap: 20px;
     align-self: stretch;
+    height:580px;
   `
   const FormDiv = styled.div`
     display: flex;
@@ -44,9 +43,8 @@ const App = () => {
     /* align-items: flex-start; */
     align-self: stretch;
     align-items: center;
-    
-    
-      
+    gap:25px;
+
   `
   const FormInput = styled.input`
     display: flex;
@@ -94,30 +92,43 @@ const App = () => {
     font-weight: 500;
     line-height: 18px; /* 128.571% */
   `
+  const FlexDiv = styled.div`
+    padding: 28px;
+    `
+  const Formator = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  `
 
   return (
-    <MainContainer>
-        <HeaderDiv>
-             <h1 style={{ color: "#3C3F41" }}>Enter Dates</h1>
-            <FormDiv>
-              <Para>From</Para>
-              <FormInput placeholder="mm/dd/yyy" type="text" />
-              <Para>To</Para>
-              <FormInput placeholder="mm/dd/yyy" type="text" />
-            </FormDiv>
-            <Section>
-              <Button color="#618AFF">Save</Button>
-              <Button color ="#8E969C">Cancel</Button>
-              </Section>
-      </HeaderDiv>
-      
-    </MainContainer>
-    // <Wrapper>
-    //   <InnerWrapper>
-       
-    //     {/* <Calendar value={currentDate} onChange={setCurrentDate} /> */}
-    //   </InnerWrapper>
-    // </Wrapper>
+    <>
+      <MainContainer>
+          <HeaderDiv>
+            <FlexDiv>
+              <h1 style={{ color: "#3C3F41" ,fontSize:"18px" ,fontWeight:"500",paddingBottom:"15px"}}>Enter Dates</h1>
+              <FormDiv>
+                <Formator>
+                  <Para>From</Para>
+                  <FormInput placeholder="mm/dd/yyy" type="text" />
+                </Formator>
+                <Formator>
+                  <Para>To</Para>
+                  <FormInput placeholder="mm/dd/yyy" type="text" />
+                </Formator>
+              </FormDiv>
+           </FlexDiv>  
+
+              <Calendar value={currentDate} onChange={setCurrentDate} />
+              
+              <Section>
+                <Button color="#618AFF">Save</Button>
+                <Button color ="#8E969C">Cancel</Button>
+                </Section>
+        </HeaderDiv>
+    
+      </MainContainer>
+    </>
   );
 };
 

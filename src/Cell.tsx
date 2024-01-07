@@ -5,7 +5,8 @@ interface CellProps {
 }
 
 const CellWrapper = styled.div<CellProps>`
-  height: 2.5rem;
+  height: 3.2em;
+  width: 3.2em;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -15,21 +16,16 @@ const CellWrapper = styled.div<CellProps>`
   transition: color 150ms, background-color 150ms, border-color 150ms,
     text-decoration-color 150ms, fill 150ms, stroke 150ms;
   cursor: pointer;
-
   &:hover {
     background-color: ${({ isActive }) =>
       isActive ? "" : "rgb(243, 244, 246)"};
   }
-  /* &:active {
-      background-color: ${({ isActive }) => (isActive ? "blue" : "")};
-    } */
-
   ${({ isActive }) =>
     isActive &&
     css`
       font-weight: 700;
       color: white;
-      background-color: #0048ff;
+      background-color: #618AFF;
     `}
 `;
 
@@ -42,7 +38,6 @@ interface Props extends React.PropsWithChildren {
 const Cell: React.FC<Props> = ({
   onClick,
   children,
-  className,
   isActive = false,
 }) => {
   return (

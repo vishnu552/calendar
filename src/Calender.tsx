@@ -18,7 +18,9 @@ type Props = {
   onChange: (date: Date) => void;
 };
 const CalendarWrapper = styled.div`
-  width: 400px;
+   width: 370px;
+   height:300px;
+   padding:10px;
 `;
 
 const Grid = styled.div`
@@ -27,15 +29,31 @@ const Grid = styled.div`
   align-items: center;
   justify-content: center;
   text-align: center;
+  padding: 0px 12px 4px 12px;
 `;
 const DropDownContainer = styled.div`
   display: flex;
-  justify-content: space-around;
-  border-top: 1px dashed gray;
-  border-bottom: 1px dashed gray;
-  padding: 10px;
+  align-items:center;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+  border-top: 1px solid var(--Divider-2, #DDE1E5);
+  border-bottom: 1px solid var(--Divider-2, #DDE1E5);
+  width:375px;
+  justify-content:center;
+  gap:72.80px;
 `;
 
+const FlexiDiv = styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
+gap:12px;
+height:40px;
+`
+const MainContainer = styled.div`
+  
+`
 const Calendar: React.FC<Props> = ({ value = new Date(), onChange }) => {
   const startDate = startOfMonth(value);
   const endDate = endOfMonth(value);
@@ -55,16 +73,20 @@ const Calendar: React.FC<Props> = ({ value = new Date(), onChange }) => {
   };
 
   return (
-    <CalendarWrapper>
-      <DropDownContainer>
-        <p onClick={prevYear}>{"<"}</p>
-        <YearDropDown value={value} onYearChange={onChange} />
-        <p onClick={nextYear}>{">"}</p>
-        <p onClick={prevMonth}>{"<"}</p>
-        <MonthsDropdown value={value} onMonthChange={onChange} />
-        <p onClick={nextMonth}>{">"}</p>
+    <MainContainer>
+     <DropDownContainer>
+          <FlexiDiv>
+              <p onClick={prevYear}>{"<"}</p>
+              <YearDropDown value={value} onYearChange={onChange} />
+              <p onClick={nextYear}>{">"}</p>
+          </FlexiDiv>
+          <FlexiDiv>
+            <p onClick={prevMonth}>{"<"}</p>
+            <MonthsDropdown value={value} onMonthChange={onChange} />
+            <p onClick={nextMonth}>{">"}</p>
+          </FlexiDiv>
       </DropDownContainer>
-
+    <CalendarWrapper>
       <Grid>
         {weeks.map((week) => (
           <Cell key={week} className="text-xs font-bold uppercase">
@@ -96,6 +118,7 @@ const Calendar: React.FC<Props> = ({ value = new Date(), onChange }) => {
         ))}
       </Grid>
     </CalendarWrapper>
+    </MainContainer>
   );
 };
 
